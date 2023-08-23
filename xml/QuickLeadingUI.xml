@@ -1,0 +1,150 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <!-- Main Frame -->
+    <Frame name="QuickLeadingFrame" parent="UIParent" toplevel="true" frameLevel="1000" frameStrata="HIGH" enablemouse="true" movable="true" hidden="true">
+        <Layers>
+            <Layer level="BACKGROUND" textureSubLevel="0">
+                <Texture parentKey="Background">
+                    <Color r="0.1" g="0.1" b="0.1" a="1"/>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Anchors><Anchor point="CENTER"/></Anchors>
+        <Frames>
+            <!-- Marks -->
+            <Frame name="QuickLeadingMarksFrame" parentKey="MarksFrame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="146" y="23"/>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" y="-7" x="1"/></Anchors>
+                <Frames>
+                    <Button parentKey="Star" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_1.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent" relativePoint="LEFT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="5"/></Attributes>
+                    </Button>
+                    <Button parentKey="Circle" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_2.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Star" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="6"/></Attributes>
+                    </Button>
+                    <Button parentKey="Diamond" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_3.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Circle" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="3"/></Attributes>
+                    </Button>
+                    <Button parentKey="Triangle" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_4.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Diamond" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="2"/></Attributes>
+                    </Button>
+                    <Button parentKey="Moon" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_5.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Triangle" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="7"/></Attributes>
+                    </Button>
+                    <Button parentKey="Square" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_6.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Moon" relativePoint="RIGHT" x="1"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="1"/></Attributes>
+                    </Button>
+                    <Button parentKey="Cross" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_7.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Square" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="4"/></Attributes>
+                    </Button>
+                    <Button parentKey="Skull" inherits="SecureActionButtonTemplate">
+                        <Layers><Layer level="BACKGROUND" textureSubLevel="1">
+                            <Texture file="Interface\TargetingFrame\UI-RaidTargetingIcon_8.PNG"><Size x="16" y="16"/><Anchors><Anchor point="CENTER"/></Anchors></Texture>
+                        </Layer></Layers>
+                        <Size x="16" y="16"/>
+                        <Anchors><Anchor point="LEFT" relativeKey="$parent.Cross" relativePoint="RIGHT" x="2"/></Anchors>
+                        <Attributes><Attribute name="ctrl-type1" value="worldmarker"/><Attribute name="marker" value="8"/></Attributes>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Clear WMarks -->
+            <Frame name="QuickLeadingClearWMarks" parentKey="ClearWMarks" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="75" y="11"/>
+                <Frames>
+                    <Button parentKey="ClearWMarksButton" inherits="SecureActionButtonTemplate">
+                        <Size x="80" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <ButtonText text="Clear WMarks" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <Scripts><OnClick>ClearRaidMarker()</OnClick></Scripts>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Stop Pull -->
+            <Frame name="QuickLeadingStopPull" parentKey="StopPull" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="75" y="11"/>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
+                <Frames>
+                    <Button parentKey="StopPullButton" inherits="SecureActionButtonTemplate">
+                        <Size x="80" y="10"/>
+                        <Anchors><Anchor point="CENTER"/></Anchors>
+                        <ButtonText text="Stop Pull" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <PushedTextOffset x="0" y="0"/>
+                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 0"/></Attributes>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Ready Check -->
+            <Frame name="QuickLeadingReadyCheckFrame" parentKey="ReadyCheckFrame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="70" y="11"/>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="TOPRIGHT" x="1"/></Anchors>
+                <Frames>
+                    <Button parentKey="ReadyCheckButton" text="Ready Check" inherits="SecureActionButtonTemplate">
+                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <ButtonText text="Ready Check" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/readycheck"/></Attributes>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Pull 5s -->
+            <Frame name="QuickLeadingPull5s" parentKey="Pull5s" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="35" y="11"/>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ReadyCheckFrame" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
+                <Frames>
+                    <Button parentKey="Pull5sButton" inherits="SecureActionButtonTemplate">
+                        <Size x="40" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <ButtonText text="P5s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 5"/></Attributes>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Pull 10s -->
+            <Frame name="QuickLeadingPull10s" parentKey="Pull10s" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="34" y="11"/>
+                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull5s" relativePoint="RIGHT" x="1"/></Anchors>
+                <Frames>
+                    <Button parentKey="Pull10sButton" inherits="SecureActionButtonTemplate">
+                        <Size x="39" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <ButtonText text="P10s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 10"/></Attributes>
+                    </Button>
+                </Frames>
+            </Frame>
+
+        </Frames>
+    </Frame>
+
+</Ui>

@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="QUICKLEADING_TOGGLE" header="QUICKLEADING_UI" category="QuickLeading">
+        _G["QuickLeadingInterfaceOptionShowUI"]:Click()
+    </Binding>
+</Bindings>
