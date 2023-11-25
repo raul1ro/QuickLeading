@@ -1,7 +1,7 @@
 ## Interface: 70300
 ## Title: QuickLeading
 ## Author: DoomFury
-## Version: 1.0
+## Version: 1.1
 ## Notes: Offers a set of quick commands for quick leading.
 ## SavedVariablesPerCharacter: QuickLeadingUIPoint, QuickLeadingUIRelativeTo, QuickLeadingUIRelativPoint, QuickLeadingUIXOffset, QuickLeadingUIYOffset, QuickLeadingUIShow, QuickLeadingUICompact
 
