@@ -42,18 +42,18 @@ function Addon.PullCancel(name, reason)
             if(reason == "cancel") then
                 SendChatMessage("Pull timer canceled", chatType);
                 SendAddonMessage("BigWigs", "P^Pull^0", Addon.GetGroupType());
-                SendAddonMessage("D4", "PT^0^" .. Addon.GetInstanceId(), Addon.GetGroupType());
+                SendAddonMessage("D4", "PT\t0\t" .. Addon.GetInstanceId(), Addon.GetGroupType());
             end
         else
             if(reason == "cancel") then
                 SendChatMessage("Pull timer canceled by " .. name, chatType);
                 SendAddonMessage("BigWigs", "P^Pull^0", Addon.GetGroupType());
-                SendAddonMessage("D4", "PT^0^" .. Addon.GetInstanceId(), Addon.GetGroupType());
+                SendAddonMessage("D4", "PT\t0\t" .. Addon.GetInstanceId(), Addon.GetGroupType());
             else
                 SendChatMessage("Pull timer replaced by " .. name, chatType);
                 if(UnitIsGroupAssistant(name) == false and UnitIsGroupLeader(name) == false) then
                     SendAddonMessage("BigWigs", "P^Pull^0", Addon.GetGroupType());
-                    SendAddonMessage("D4", "PT^0^" .. Addon.GetInstanceId(), Addon.GetGroupType());
+                    SendAddonMessage("D4", "PT\t0\t" .. Addon.GetInstanceId(), Addon.GetGroupType());
                 end
             end
         end
@@ -85,7 +85,7 @@ function Addon.PullTimer(seconds)
     -- include bigwigs and dbm
     SendAddonMessage("QL_PULL", "replace", groupType);
     SendAddonMessage("BigWigs", "P^Pull^" .. seconds, Addon.GetGroupType());
-    SendAddonMessage("D4", "PT^" .. seconds .. "^" .. Addon.GetInstanceId(), Addon.GetGroupType());
+    SendAddonMessage("D4", "PT\t" .. seconds .. "\t" .. Addon.GetInstanceId(), Addon.GetGroupType());
 
     -- Pull in message
     SendChatMessage("Pull in " .. seconds .. " seconds", chatType);
