@@ -5,32 +5,27 @@
 
 <p>Features:</p>
 <ul>
-<li>
-Commands:
-    <ul>
-        <li>
-        Target/Word Marks
-            <ul>
-                <li>Left Click --> Target Mark</li>
-                <li>Ctrl + Left Click --> World Mark</li>
-            </ul>
-        </li>
-        <li>Clear Word Marks (WMarks)</li>
-        <li>Ready Check</li>
-        <li>Pull 5/10 seconds</li>
-        <li>Stop pull</li>
-    </ul>
-</li>
-<li>
-UI Modes: 
-    <ul>
-        <li>Linear (Default)</li>
-        <li>Compact</li>
-    </ul>
-</li>
-<li>Setup Interface (Interface > AddOns > QuickLeading)</li>
-<li>Key binding for toggling UI (Key Bindings > QuickLeading)</li>
+    <li>
+    Target/Word Marks
+        <ul>
+            <li>Left Click --> Target Mark</li>
+            <li>Ctrl + Left Click --> World Mark</li>
+        </ul>
+    </li>
+    <li>Clear Word Marks (WMarks)</li>
+    <li>Ready Check</li>
+    <li>Pull 7/10 seconds</li>
+    <li>Stop pull</li>
+    <li>Command `/qlpull` for custom timer</li>
 </ul>
+<p>UI Modes:</p>
+<ul>
+    <li>Linear (Default)</li>
+    <li>Compact</li>
+</ul>
+
+<p>Setup Interface (Interface > AddOns > QuickLeading)</p>
+<p>Key binding for toggling UI (Key Bindings > QuickLeading)</p>
 
 <p><b>The Pull commands have been tested on DBM and BigWigs.</b></p> 
 

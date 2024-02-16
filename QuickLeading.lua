@@ -95,3 +95,62 @@ addonLoadedFrame:SetScript("OnEvent", function(_, event , ...)
     end
 
 end)
+
+-- register addon message
+if(RegisterAddonMessagePrefix("QL_PULL")) then
+
+    QuickLeadingFrame:RegisterEvent("CHAT_MSG_ADDON");
+    QuickLeadingFrame:SetScript("OnEvent", function(_, event , type, message, _, sender, ...)
+
+        if event == "CHAT_MSG_ADDON" and type == "QL_PULL" then
+
+            local playerName = UnitName("player");
+            if(sender ~= playerName) then
+                Addon.PullCancel(sender, message); -- call pull cancel
+            end
+
+        end
+
+    end);
+end
+
+-- register slash command
+SLASH_QLPULL1 = "/qlpull"
+SlashCmdList.QLPULL = function(input)
+
+    local seconds = tonumber(input);
+    if(seconds == nil) then
+        print("Invalid argument for `/qlpull`");
+        return;
+    end
+
+    Addon.PullTimer(seconds);
+
+end
+
+function Addon.GetChatType()
+    if(IsInRaid()) then
+        if(UnitIsGroupLeader("player") or UnitIsGroupAssistant("player")) then
+            return "RAID_WARNING"
+        else
+            return "RAID"
+        end
+    elseif(GetHomePartyInfo() ~= nil) then
+        return "PARTY"
+    else
+        return "SAY"
+    end
+end
+function Addon.GetGroupType()
+    if(IsInRaid()) then
+        return "RAID"
+    elseif(GetHomePartyInfo() ~= nil) then
+        return "PARTY"
+    else
+        return nil;
+    end
+end
+function Addon.GetInstanceId()
+    local _, _, _, _, _, _, _, id = GetInstanceInfo()
+    return tonumber(id) or 0
+end

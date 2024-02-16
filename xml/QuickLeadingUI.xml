@@ -87,8 +87,9 @@
                 <Size x="75" y="11"/>
                 <Frames>
                     <Button parentKey="ClearWMarksButton" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <Size x="80" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
                         <ButtonText text="Clear WMarks" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <PushedTextOffset x="-1" y="-1"/>
                         <Scripts><OnClick>ClearRaidMarker()</OnClick></Scripts>
                     </Button>
                 </Frames>
@@ -99,11 +100,9 @@
                 <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
                 <Frames>
                     <Button parentKey="StopPullButton" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="10"/>
-                        <Anchors><Anchor point="CENTER"/></Anchors>
+                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors>
                         <ButtonText text="Stop Pull" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
-                        <PushedTextOffset x="0" y="0"/>
-                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 0"/></Attributes>
+                        <PushedTextOffset x="-1" y="-1"/>
                     </Button>
                 </Frames>
             </Frame>
@@ -113,33 +112,34 @@
                 <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="TOPRIGHT" x="1"/></Anchors>
                 <Frames>
                     <Button parentKey="ReadyCheckButton" text="Ready Check" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors>
                         <ButtonText text="Ready Check" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <PushedTextOffset x="-1" y="-1"/>
                         <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/readycheck"/></Attributes>
                     </Button>
                 </Frames>
             </Frame>
-            <!-- Pull 5s -->
-            <Frame name="QuickLeadingPull5s" parentKey="Pull5s" inherits="QuickLeadingSimpleFrameTemplate">
+            <!-- Pull 7s -->
+            <Frame name="QuickLeadingPull7s" parentKey="Pull7s" inherits="QuickLeadingSimpleFrameTemplate">
                 <Size x="35" y="11"/>
                 <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ReadyCheckFrame" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
                 <Frames>
-                    <Button parentKey="Pull5sButton" inherits="SecureActionButtonTemplate">
-                        <Size x="40" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
-                        <ButtonText text="P5s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
-                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 5"/></Attributes>
+                    <Button parentKey="Pull7sButton" inherits="SecureActionButtonTemplate">
+                        <Size x="40" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
+                        <ButtonText text="P7s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                        <PushedTextOffset x="-1" y="-1"/>
                     </Button>
                 </Frames>
             </Frame>
             <!-- Pull 10s -->
             <Frame name="QuickLeadingPull10s" parentKey="Pull10s" inherits="QuickLeadingSimpleFrameTemplate">
                 <Size x="34" y="11"/>
-                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull5s" relativePoint="RIGHT" x="1"/></Anchors>
+                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull7s" relativePoint="RIGHT" x="1"/></Anchors>
                 <Frames>
                     <Button parentKey="Pull10sButton" inherits="SecureActionButtonTemplate">
-                        <Size x="39" y="11"/><Anchors><Anchor point="CENTER"/></Anchors><PushedTextOffset x="0" y="0"/>
+                        <Size x="39" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
                         <ButtonText text="P10s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
-                        <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/pull 10"/></Attributes>
+                        <PushedTextOffset x="-1" y="-1"/>
                     </Button>
                 </Frames>
             </Frame>
