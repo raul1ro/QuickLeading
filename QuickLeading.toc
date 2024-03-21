@@ -1,9 +1,9 @@
 ## Interface: 70300
 ## Title: QuickLeading
-## Author: DoomFury
-## Version: 1.2
+## Author: raul1ro (discord)
+## Version: 1.3
 ## Notes: Offers a set of quick commands for quick leading.
-## SavedVariablesPerCharacter: QuickLeadingUIPoint, QuickLeadingUIRelativeTo, QuickLeadingUIRelativPoint, QuickLeadingUIXOffset, QuickLeadingUIYOffset, QuickLeadingUIShow, QuickLeadingUICompact
+## SavedVariablesPerCharacter: QuickLeadingUIPoint, QuickLeadingUIRelativeTo, QuickLeadingUIRelativPoint, QuickLeadingUIXOffset, QuickLeadingUIYOffset, QuickLeadingUIShow, QuickLeadingUICompact, QuickLeadingPull1Seconds, QuickLeadingPull2Seconds, QuickLeadingPull3Seconds, QuickLeadingScale
 
 xml\template\UITemplates.xml
 

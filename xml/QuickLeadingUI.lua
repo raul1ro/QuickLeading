@@ -8,27 +8,53 @@ end
 
 function Addon.SetLinearMode()
 
-    QuickLeadingFrame:SetSize(295, 30)
+    QuickLeadingFrame.TopBorder:SetWidth(248);
 
-    QuickLeadingFrame.ClearWMarks:ClearAllPoints()
-    QuickLeadingFrame.ClearWMarks:SetPoint("TOPLEFT", QuickLeadingFrame.MarksFrame, "TOPRIGHT", 1, 0)
+    local clearWMarksFrame = QuickLeadingFrame.ClearWMarksFrame;
+    clearWMarksFrame:SetWidth(55);
+    clearWMarksFrame.Button:SetText("Clear WM");
+    clearWMarksFrame:ClearAllPoints()
+    clearWMarksFrame:SetPoint("TOPLEFT", QuickLeadingFrame.MarksFrame, "TOPRIGHT", 1, 0)
+
+    local rcFrame = QuickLeadingFrame.ReadyCheckFrame;
+    rcFrame:SetWidth(43);
+    rcFrame.Button:SetText("RCheck");
+
+    local cancelFrame = QuickLeadingFrame.CancelFrame;
+    cancelFrame:SetWidth(39);
+    cancelFrame.Button:SetText("Cancel");
+    cancelFrame:ClearAllPoints();
+    cancelFrame:SetPoint("TOPLEFT", clearWMarksFrame, "BOTTOMLEFT", 0, -1)
 
 end
 
 function Addon.SetCompactMode()
 
-    QuickLeadingFrame:SetSize(148, 55)
+    QuickLeadingFrame.TopBorder:SetWidth(148);
 
-    QuickLeadingFrame.ClearWMarks:ClearAllPoints()
-    QuickLeadingFrame.ClearWMarks:SetPoint("TOPLEFT", QuickLeadingFrame.MarksFrame, "BOTTOMLEFT", 0, -1)
+    local clearWMarksFrame = QuickLeadingFrame.ClearWMarksFrame;
+    clearWMarksFrame:SetWidth(33);
+    clearWMarksFrame.Button:SetText("CWM");
+    clearWMarksFrame:ClearAllPoints()
+    clearWMarksFrame:SetPoint("TOPLEFT", QuickLeadingFrame.MarksFrame, "BOTTOMLEFT", 0, -1)
+
+    local rcFrame = QuickLeadingFrame.ReadyCheckFrame;
+    rcFrame:SetWidth(19);
+    rcFrame.Button:SetText("RC");
+
+    local cancelFrame = QuickLeadingFrame.CancelFrame;
+    cancelFrame:SetWidth(32);
+    cancelFrame.Button:SetText("Canc.");
+    cancelFrame:ClearAllPoints();
+    cancelFrame:SetPoint("LEFT", rcFrame, "RIGHT", 1, 0)
 
 end
 
 function Addon.InitUI()
 
-    QuickLeadingFrame:RegisterForDrag("LeftButton")
-    QuickLeadingFrame:SetScript("OnDragStart", QuickLeadingFrame.StartMoving)
-    QuickLeadingFrame:SetScript("OnDragStop", function()
+    QuickLeadingFrame.TopBorder:RegisterForDrag("LeftButton")
+    QuickLeadingFrame.TopBorder:SetScript("OnDragStart", function() QuickLeadingFrame:StartMoving(); end);
+    QuickLeadingFrame.TopBorder:SetScript("OnDragStop", function()
         QuickLeadingFrame:StopMovingOrSizing()
         QuickLeadingUIPoint, QuickLeadingUIRelativeTo, QuickLeadingUIRelativPoint, QuickLeadingUIXOffset, QuickLeadingUIYOffset = QuickLeadingFrame:GetPoint(0);
     end)
@@ -57,14 +83,17 @@ function Addon.InitUI()
     marksFrame.Cross:HookScript("OnClick", function() setTargetMark(7) end);
     marksFrame.Skull:HookScript("OnClick", function() setTargetMark(8) end);
 
-    QuickLeadingPull7s.Pull7sButton:HookScript("OnClick", function()
-        Addon.PullTimer(7);
-    end)
-    QuickLeadingPull10s.Pull10sButton:HookScript("OnClick", function()
-        Addon.PullTimer(10);
-    end)
-    QuickLeadingStopPull.StopPullButton:HookScript("OnClick", function()
+    QuickLeadingCancelFrame.Button:HookScript("OnClick", function()
         Addon.PullTimer(0);
-    end)
+    end);
+    QuickLeadingPull1Frame.Button:HookScript("OnClick", function()
+        Addon.PullTimer(QuickLeadingPull1Seconds);
+    end);
+    QuickLeadingPull2Frame.Button:HookScript("OnClick", function()
+        Addon.PullTimer(QuickLeadingPull2Seconds);
+    end);
+    QuickLeadingPull3Frame.Button:HookScript("OnClick", function()
+        Addon.PullTimer(QuickLeadingPull3Seconds);
+    end);
 
 end

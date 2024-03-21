@@ -1,20 +1,23 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
 
     <!-- Main Frame -->
-    <Frame name="QuickLeadingFrame" parent="UIParent" toplevel="true" frameLevel="1000" frameStrata="HIGH" enablemouse="true" movable="true" hidden="true">
-        <Layers>
-            <Layer level="BACKGROUND" textureSubLevel="0">
-                <Texture parentKey="Background">
-                    <Color r="0.1" g="0.1" b="0.1" a="1"/>
-                </Texture>
-            </Layer>
-        </Layers>
+    <Frame name="QuickLeadingFrame" parent="UIParent" toplevel="true" frameLevel="1000" frameStrata="HIGH" movable="true" hidden="true">
+        <Size x="1" y="1"/>
         <Anchors><Anchor point="CENTER"/></Anchors>
         <Frames>
+            <!-- Top Border -->
+            <Frame parentKey="TopBorder" enablemouse="true" movable="true">
+                <Size y="5"/>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT"/></Anchors>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
+            </Frame>
             <!-- Marks -->
             <Frame name="QuickLeadingMarksFrame" parentKey="MarksFrame" inherits="QuickLeadingSimpleFrameTemplate">
                 <Size x="146" y="23"/>
-                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" y="-7" x="1"/></Anchors>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.TopBorder" relativePoint="BOTTOMLEFT" y="-1" x="1"/></Anchors>
+                <Layers>
+                    <Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer>
+                </Layers>
                 <Frames>
                     <Button parentKey="Star" inherits="SecureActionButtonTemplate">
                         <Layers><Layer level="BACKGROUND" textureSubLevel="1">
@@ -83,62 +86,73 @@
                 </Frames>
             </Frame>
             <!-- Clear WMarks -->
-            <Frame name="QuickLeadingClearWMarks" parentKey="ClearWMarks" inherits="QuickLeadingSimpleFrameTemplate">
-                <Size x="75" y="11"/>
+            <Frame name="QuickLeadingClearWMarksFrame" parentKey="ClearWMarksFrame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
                 <Frames>
-                    <Button parentKey="ClearWMarksButton" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
-                        <ButtonText text="Clear WMarks" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-0.25"/></Anchors></ButtonText>
                         <PushedTextOffset x="-1" y="-1"/>
                         <Scripts><OnClick>ClearRaidMarker()</OnClick></Scripts>
                     </Button>
                 </Frames>
             </Frame>
-            <!-- Stop Pull -->
-            <Frame name="QuickLeadingStopPull" parentKey="StopPull" inherits="QuickLeadingSimpleFrameTemplate">
-                <Size x="75" y="11"/>
-                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
-                <Frames>
-                    <Button parentKey="StopPullButton" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors>
-                        <ButtonText text="Stop Pull" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
-                        <PushedTextOffset x="-1" y="-1"/>
-                    </Button>
-                </Frames>
-            </Frame>
             <!-- Ready Check -->
             <Frame name="QuickLeadingReadyCheckFrame" parentKey="ReadyCheckFrame" inherits="QuickLeadingSimpleFrameTemplate">
-                <Size x="70" y="11"/>
-                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarks" relativePoint="TOPRIGHT" x="1"/></Anchors>
+                <Size y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
+                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ClearWMarksFrame" relativePoint="TOPRIGHT" x="1"/></Anchors>
                 <Frames>
-                    <Button parentKey="ReadyCheckButton" text="Ready Check" inherits="SecureActionButtonTemplate">
-                        <Size x="80" y="10"/><Anchors><Anchor point="CENTER"/></Anchors>
-                        <ButtonText text="Ready Check" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-0.25"/></Anchors></ButtonText>
                         <PushedTextOffset x="-1" y="-1"/>
                         <Attributes><Attribute name="type" value="macro"/><Attribute name="macrotext" value="/readycheck"/></Attributes>
                     </Button>
                 </Frames>
             </Frame>
-            <!-- Pull 7s -->
-            <Frame name="QuickLeadingPull7s" parentKey="Pull7s" inherits="QuickLeadingSimpleFrameTemplate">
-                <Size x="35" y="11"/>
-                <Anchors><Anchor point="TOPLEFT" relativeKey="$parent.ReadyCheckFrame" relativePoint="BOTTOMLEFT" y="-1"/></Anchors>
+            <!-- Cancel -->
+            <Frame name="QuickLeadingCancelFrame" parentKey="CancelFrame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
                 <Frames>
-                    <Button parentKey="Pull7sButton" inherits="SecureActionButtonTemplate">
-                        <Size x="40" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
-                        <ButtonText text="P7s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="Cancel" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-0.25"/></Anchors></ButtonText>
                         <PushedTextOffset x="-1" y="-1"/>
                     </Button>
                 </Frames>
             </Frame>
-            <!-- Pull 10s -->
-            <Frame name="QuickLeadingPull10s" parentKey="Pull10s" inherits="QuickLeadingSimpleFrameTemplate">
-                <Size x="34" y="11"/>
-                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull7s" relativePoint="RIGHT" x="1"/></Anchors>
+            <!-- Pull 1 -->
+            <Frame name="QuickLeadingPull1Frame" parentKey="Pull1Frame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="19" y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
+                <Anchors><Anchor point="LEFT" relativeKey="$parent.CancelFrame" relativePoint="RIGHT" x="1"/></Anchors>
                 <Frames>
-                    <Button parentKey="Pull10sButton" inherits="SecureActionButtonTemplate">
-                        <Size x="39" y="11"/><Anchors><Anchor point="CENTER"/></Anchors>
-                        <ButtonText text="P10s" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER"/></Anchors></ButtonText>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="P1" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-1"/></Anchors></ButtonText>
+                        <PushedTextOffset x="-1" y="-1"/>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Pull 2 -->
+            <Frame name="QuickLeadingPull2Frame" parentKey="Pull2Frame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="19" y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
+                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull1Frame" relativePoint="RIGHT" x="1"/></Anchors>
+                <Frames>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="P2" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-1"/></Anchors></ButtonText>
+                        <PushedTextOffset x="-1" y="-1"/>
+                    </Button>
+                </Frames>
+            </Frame>
+            <!-- Pull 3 -->
+            <Frame name="QuickLeadingPull3Frame" parentKey="Pull3Frame" inherits="QuickLeadingSimpleFrameTemplate">
+                <Size x="19" y="11"/>
+                <Layers><Layer level="BACKGROUND" textureSubLevel="0"><Texture parentKey="Background"><Color r="0.1" g="0.1" b="0.1" a="1"/></Texture></Layer></Layers>
+                <Anchors><Anchor point="LEFT" relativeKey="$parent.Pull2Frame" relativePoint="RIGHT" x="1"/></Anchors>
+                <Frames>
+                    <Button parentKey="Button" inherits="SecureActionButtonTemplate" setAllPoints="true">
+                        <ButtonText text="P3" inherits="QuickLeadingWhiteFont"><Anchors><Anchor point="CENTER" x="-1"/></Anchors></ButtonText>
                         <PushedTextOffset x="-1" y="-1"/>
                     </Button>
                 </Frames>

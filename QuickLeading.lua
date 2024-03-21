@@ -28,7 +28,6 @@ local function setInterfaceOptionShowUI(addonCategory)
     optionShowUI:SetChecked(QuickLeadingUIShow)
 
 end
-
 local function setInterfaceOptionCompactMode(addonCategory)
 
     -- create a checkbutton for compact ui
@@ -51,6 +50,87 @@ local function setInterfaceOptionCompactMode(addonCategory)
         end
     end)
     optionCompactUI:SetChecked(QuickLeadingUICompact)
+
+end
+local function setInterfaceOptionPulls(addonCategory)
+
+    local p1Label = addonCategory:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    p1Label:SetText("P1 seconds:")
+    p1Label:SetPoint("TOPLEFT", 17, -94);
+    p1Label:SetTextColor(1, 1, 1, 1);
+    local p1Input = CreateFrame("EditBox", "QuickLeadingInterfaceOptionPull1SecondsInput", addonCategory, "InputBoxTemplate")
+    p1Input:SetSize(30, 20);
+    p1Input:SetPoint("TOPLEFT", 97, -90);
+    p1Input:SetNumeric(true);
+    p1Input:SetAutoFocus(false);
+    p1Input:SetMultiLine(false);
+    p1Input:SetMaxLetters(2);
+    p1Input:SetNumber(QuickLeadingPull1Seconds);
+    p1Input:SetCursorPosition(0);
+    p1Input:SetScript("OnTextChanged", function(self)
+        QuickLeadingPull1Seconds = tonumber(self:GetText());
+    end);
+
+    local p2Label = addonCategory:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    p2Label:SetText("P2 seconds:")
+    p2Label:SetPoint("TOPLEFT", 17, -119);
+    p2Label:SetTextColor(1, 1, 1, 1);
+    local p2Input = CreateFrame("EditBox", "QuickLeadingInterfaceOptionPull1SecondsInput", addonCategory, "InputBoxTemplate")
+    p2Input:SetSize(30, 20);
+    p2Input:SetPoint("TOPLEFT", 97, -115);
+    p2Input:SetNumeric(true);
+    p2Input:SetAutoFocus(false);
+    p2Input:SetMultiLine(false);
+    p2Input:SetMaxLetters(2);
+    p2Input:SetNumber(QuickLeadingPull2Seconds);
+    p2Input:SetCursorPosition(0);
+    p2Input:SetScript("OnTextChanged", function(self)
+        QuickLeadingPull2Seconds = tonumber(self:GetText());
+    end);
+
+    local p3Label = addonCategory:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    p3Label:SetText("P3 seconds:")
+    p3Label:SetPoint("TOPLEFT", 17, -144);
+    p3Label:SetTextColor(1, 1, 1, 1);
+    local p3Input = CreateFrame("EditBox", "QuickLeadingInterfaceOptionPull1SecondsInput", addonCategory, "InputBoxTemplate")
+    p3Input:SetSize(30, 20);
+    p3Input:SetPoint("TOPLEFT", 97, -140);
+    p3Input:SetNumeric(true);
+    p3Input:SetAutoFocus(false);
+    p3Input:SetMultiLine(false);
+    p3Input:SetMaxLetters(2);
+    p3Input:SetNumber(QuickLeadingPull3Seconds);
+    p3Input:SetCursorPosition(0);
+    p3Input:SetScript("OnTextChanged", function(self)
+        QuickLeadingPull3Seconds = tonumber(self:GetText());
+    end);
+
+end
+
+local function setInterfaceOptionScale(addonCategory)
+
+    local scaleSlider = CreateFrame("Slider", "QuickLeadingInterfaceOptionScale", addonCategory, "OptionsSliderTemplate");
+    scaleSlider:SetSize(300, 15);
+    scaleSlider:ClearAllPoints();
+    scaleSlider:SetPoint("TOPLEFT", 230, -65);
+    scaleSlider:SetMinMaxValues(100, 150);
+    scaleSlider:SetObeyStepOnDrag(true);
+    scaleSlider:SetValueStep(1);
+    _G['QuickLeadingInterfaceOptionScaleLow']:SetText('100%');
+    _G['QuickLeadingInterfaceOptionScaleHigh']:SetText('150%');
+    local text = _G['QuickLeadingInterfaceOptionScaleText'];
+    scaleSlider:HookScript("OnValueChanged", function(self)
+
+        local value = self:GetValue();
+        QuickLeadingScale = math.floor(value);
+
+        text:SetText("Scale: " .. QuickLeadingScale .. "%");
+        QuickLeadingFrame:SetScale(QuickLeadingScale/100);
+
+    end)
+    scaleSlider:Show();
+
+    scaleSlider:SetValue(QuickLeadingScale);
 
 end
 
@@ -78,10 +158,6 @@ addonLoadedFrame:SetScript("OnEvent", function(_, event , ...)
         title:SetFont("Fonts\\FRIZQT__.TTF", 20, "OUTLINE")
         title:SetPoint("TOPLEFT", 15, -15)
 
-        -- add the options
-        setInterfaceOptionShowUI(addonCategory)
-        setInterfaceOptionCompactMode(addonCategory)
-
         -- set current state
         if(QuickLeadingUICompact) then
             Addon.SetCompactMode()
@@ -91,6 +167,24 @@ addonLoadedFrame:SetScript("OnEvent", function(_, event , ...)
         if(QuickLeadingUIShow) then
             QuickLeadingFrame:Show()
         end
+        if(QuickLeadingPull1Seconds == nil) then
+            QuickLeadingPull1Seconds = 3;
+        end
+        if(QuickLeadingPull2Seconds == nil) then
+            QuickLeadingPull2Seconds = 7;
+        end
+        if(QuickLeadingPull3Seconds == nil) then
+            QuickLeadingPull3Seconds = 10;
+        end
+        if(QuickLeadingScale == nil) then
+            QuickLeadingScale = 100;
+        end
+
+        -- add the options
+        setInterfaceOptionShowUI(addonCategory);
+        setInterfaceOptionCompactMode(addonCategory);
+        setInterfaceOptionPulls(addonCategory);
+        setInterfaceOptionScale(addonCategory);
 
     end
 
@@ -131,14 +225,14 @@ end
 function Addon.GetChatType()
     if(IsInRaid()) then
         if(UnitIsGroupLeader("player") or UnitIsGroupAssistant("player")) then
-            return "RAID_WARNING"
+            return "RAID_WARNING";
         else
-            return "RAID"
+            return "PARTY";
         end
     elseif(GetHomePartyInfo() ~= nil) then
-        return "PARTY"
+        return "PARTY";
     else
-        return "SAY"
+        return "SAY";
     end
 end
 function Addon.GetGroupType()
